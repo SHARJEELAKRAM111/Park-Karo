@@ -36,36 +36,37 @@ class _AnimatedCarBannerState extends State<AnimatedCarBanner>
         return Transform.translate(
           offset: Offset(0, offset),
           child: Container(
-            width: 140,
-            height: 140,
+            width: 160,
+            height: 160,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(32),
+              shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primary.withValues(alpha: 0.35),
-                  blurRadius: 30,
-                  spreadRadius: 4,
-                  offset: const Offset(0, 8),
+                  color: AppColors.accent.withValues(alpha: 0.25),
+                  blurRadius: 32,
+                  spreadRadius: 6,
                 ),
                 BoxShadow(
-                  color: AppColors.accent.withValues(alpha: 0.2),
-                  blurRadius: 20,
-                  spreadRadius: 1,
+                  color: AppColors.primary.withValues(alpha: 0.3),
+                  blurRadius: 48,
+                  spreadRadius: 10,
+                  offset: const Offset(0, 10),
                 ),
               ],
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(32),
-              child: Image.asset(
-                'assets/images/app_icon.png',
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Container(
-                  color: AppColors.cardBg,
-                  child: const Icon(
-                    Icons.directions_car,
-                    size: 80,
-                    color: AppColors.primary,
-                  ),
+            child: Image.asset(
+              'assets/images/app_icon.png',
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.primary.withValues(alpha: 0.15),
+                ),
+                child: const Icon(
+                  Icons.directions_car,
+                  size: 80,
+                  color: AppColors.primary,
                 ),
               ),
             ),
