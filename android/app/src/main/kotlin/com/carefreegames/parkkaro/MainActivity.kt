@@ -1,4 +1,4 @@
-package com.parkkaro.park_karo
+package com.carefreegames.parkkaro
 
 import io.flutter.embedding.android.FlutterActivity
 
