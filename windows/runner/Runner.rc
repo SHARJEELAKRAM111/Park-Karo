@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.parkkaro" "\0"
-            VALUE "FileDescription", "park_karo" "\0"
+            VALUE "FileDescription", "ParkKaro" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "park_karo" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.parkkaro. All rights reserved." "\0"
             VALUE "OriginalFilename", "park_karo.exe" "\0"
-            VALUE "ProductName", "park_karo" "\0"
+            VALUE "ProductName", "ParkKaro" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

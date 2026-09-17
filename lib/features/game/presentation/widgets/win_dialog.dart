@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../shared/widgets/star_rating.dart';
@@ -24,6 +24,18 @@ class WinDialog extends StatelessWidget {
     required this.onLevelSelect,
   });
 
+  String get _ratingText {
+    if (stars == 3) return 'PERFECT PARKING!';
+    if (stars == 2) return 'GREAT DRIVING!';
+    return 'LEVEL CLEARED!';
+  }
+
+  Color get _ratingColor {
+    if (stars == 3) return AppColors.accent;
+    if (stars == 2) return AppColors.primary;
+    return AppColors.secondary;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -34,38 +46,48 @@ class WinDialog extends StatelessWidget {
           backgroundColor: AppColors.cardBg,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 380),
+            constraints: const BoxConstraints(maxWidth: 360),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: AppColors.secondary.withValues(alpha: 0.15),
+                      color: _ratingColor.withValues(alpha: 0.15),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.emoji_events_rounded,
-                      size: 48,
-                      color: AppColors.accent,
-                    ),
-                  ),
-                  const SizedBox(height: 14),
-                  Text(
-                    'LEVEL CLEARED!',
-                    style: AppTypography.titleLarge.copyWith(
-                      color: AppColors.secondary,
-                      fontSize: 26,
+                      size: 44,
+                      color: _ratingColor,
                     ),
                   ),
                   const SizedBox(height: 12),
-                  StarRating(stars: stars, size: 40),
-                  const SizedBox(height: 14),
                   Text(
-                    'Moves:  (Par: )',
-                    style: AppTypography.bodyLarge,
+                    _ratingText,
+                    style: AppTypography.titleLarge.copyWith(
+                      color: _ratingColor,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 10),
+                  StarRating(stars: stars, size: 36),
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.black26,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.white12),
+                    ),
+                    child: Text(
+                      'Moves: $moves (Par: $par)',
+                      style: AppTypography.bodyMedium.copyWith(color: Colors.white70),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Container(
@@ -78,45 +100,57 @@ class WinDialog extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.monetization_on, color: AppColors.accent, size: 22),
+                        const Icon(Icons.monetization_on, color: AppColors.accent, size: 20),
                         const SizedBox(width: 6),
                         Text(
-                          '+ Coins',
+                          '+$coins Coins',
                           style: AppTypography.titleMedium.copyWith(
                             color: AppColors.accent,
-                            fontSize: 18,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 20),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       IconButton(
+                        tooltip: 'Replay Level',
                         onPressed: onReplay,
-                        icon: const Icon(Icons.replay_rounded, color: Colors.white, size: 24),
+                        icon: const Icon(Icons.replay_rounded, color: Colors.white, size: 22),
                         style: IconButton.styleFrom(
                           backgroundColor: AppColors.cardBgLight,
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(10),
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: onNextLevel,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
-                          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: onNextLevel,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primary,
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                          ),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              'NEXT LEVEL',
+                              style: AppTypography.gameButton.copyWith(fontSize: 14),
+                            ),
+                          ),
                         ),
-                        child: Text('NEXT LEVEL', style: AppTypography.gameButton),
                       ),
+                      const SizedBox(width: 8),
                       IconButton(
+                        tooltip: 'Select Level',
                         onPressed: onLevelSelect,
-                        icon: const Icon(Icons.grid_view_rounded, color: Colors.white, size: 24),
+                        icon: const Icon(Icons.grid_view_rounded, color: Colors.white, size: 22),
                         style: IconButton.styleFrom(
                           backgroundColor: AppColors.cardBgLight,
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(10),
                         ),
                       ),
                     ],

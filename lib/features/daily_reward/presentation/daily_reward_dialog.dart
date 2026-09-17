@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/storage/progress_repository.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -53,11 +53,11 @@ class DailyRewardDialog extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              Text('Day ', style: const TextStyle(fontSize: 10, color: Colors.white70)),
+                              Text('Day ${day.day}', style: const TextStyle(fontSize: 10, color: Colors.white70)),
                               const SizedBox(height: 2),
                               const Icon(Icons.monetization_on, color: AppColors.accent, size: 20),
                               const SizedBox(height: 2),
-                              Text('+', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                              Text('+${day.coinReward}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
                             ],
                           ),
                         );

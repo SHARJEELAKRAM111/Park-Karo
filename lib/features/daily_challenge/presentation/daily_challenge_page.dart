@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../game/presentation/game_page.dart';
@@ -28,7 +28,7 @@ class DailyChallengePage extends StatelessWidget {
             const SizedBox(height: 16),
             Text('TODAYS PUZZLE', style: AppTypography.titleLarge),
             const SizedBox(height: 8),
-            Text('Date: //', style: AppTypography.bodyMedium),
+            Text('Date: ${now.day}/${now.month}/${now.year}', style: AppTypography.bodyMedium),
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {

@@ -79,7 +79,6 @@ class _GamePageState extends State<GamePage> {
                   builder: (context, constraints) {
                     final availableHeight = constraints.maxHeight;
                     final availableWidth = constraints.maxWidth;
-                    // Header: ~65px, Controls: ~75px, Spacing: ~20px
                     final maxBoardHeight = availableHeight - 165.0;
                     final maxBoardWidth = availableWidth - 32.0;
                     final boardSide = math.min(maxBoardWidth, maxBoardHeight).clamp(200.0, 520.0);
@@ -96,6 +95,7 @@ class _GamePageState extends State<GamePage> {
                               moveCount: state.moveCount,
                               parMoves: state.level.parMoves,
                               coins: repo.coins,
+                              difficulty: state.level.difficulty,
                               onBack: () => Navigator.of(context).pop(),
                             ),
                             Expanded(

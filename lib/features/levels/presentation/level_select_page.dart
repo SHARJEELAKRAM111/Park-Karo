@@ -20,11 +20,11 @@ class _LevelSelectPageState extends State<LevelSelectPage>
   final repo = LevelRepository();
 
   final List<String> worlds = [
-    'World 1: Beginner',
-    'World 2: Easy',
-    'World 3: Medium',
-    'World 4: Hard',
-    'World 5: Expert',
+    'World 1: Advanced',
+    'World 2: Hard',
+    'World 3: Expert',
+    'World 4: Master',
+    'World 5: Grandmaster',
   ];
 
   @override

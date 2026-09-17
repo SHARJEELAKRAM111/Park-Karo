@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class AnimatedCarBanner extends StatefulWidget {
@@ -32,26 +32,42 @@ class _AnimatedCarBannerState extends State<AnimatedCarBanner>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        final offset = (_controller.value * 20) - 10;
+        final offset = (_controller.value * 12) - 6;
         return Transform.translate(
-          offset: Offset(offset, 0),
+          offset: Offset(0, offset),
           child: Container(
-            padding: const EdgeInsets.all(20),
+            width: 140,
+            height: 140,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.primary.withValues(alpha: 0.15),
+              borderRadius: BorderRadius.circular(32),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primary.withValues(alpha: 0.3),
+                  color: AppColors.primary.withValues(alpha: 0.35),
                   blurRadius: 30,
-                  spreadRadius: 10,
-                )
+                  spreadRadius: 4,
+                  offset: const Offset(0, 8),
+                ),
+                BoxShadow(
+                  color: AppColors.accent.withValues(alpha: 0.2),
+                  blurRadius: 20,
+                  spreadRadius: 1,
+                ),
               ],
             ),
-            child: const Icon(
-              Icons.directions_car,
-              size: 100,
-              color: AppColors.primary,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(32),
+              child: Image.asset(
+                'assets/images/app_icon.png',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  color: AppColors.cardBg,
+                  child: const Icon(
+                    Icons.directions_car,
+                    size: 80,
+                    color: AppColors.primary,
+                  ),
+                ),
+              ),
             ),
           ),
         );
