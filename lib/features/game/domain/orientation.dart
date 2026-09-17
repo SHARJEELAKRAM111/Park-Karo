@@ -1,0 +1,4 @@
+enum VehicleOrientation {
+  horizontal,
+  vertical,
+}
