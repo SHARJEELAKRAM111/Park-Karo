@@ -59,12 +59,12 @@ class VehicleSkin extends Equatable {
     ),
     VehicleSkin(
       id: 'gold_luxury',
-      name: 'Golden VIP',
-      description: 'Pure 24k gold luxury finish',
+      name: 'Golden Legend',
+      description: 'Pure 24k gold championship finish',
       price: 1000,
       primaryColor: Color(0xFFFFD700),
       accentColor: Color(0xFFFFA000),
-      icon: Icons.workspace_premium,
+      icon: Icons.star_rounded,
     ),
     VehicleSkin(
       id: 'stealth_black',

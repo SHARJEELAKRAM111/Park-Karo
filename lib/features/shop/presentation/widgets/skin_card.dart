@@ -63,7 +63,7 @@ class SkinCard extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             ),
             child: Text(
-              isEquipped ? 'EQUIPPED' : (isUnlocked ? 'EQUIP' : ' C'),
+              isEquipped ? 'EQUIPPED' : (isUnlocked ? 'EQUIP' : '${skin.price} C'),
               style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
             ),
           ),
